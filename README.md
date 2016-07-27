@@ -15,7 +15,7 @@ directly in our Django database by receiving them through a public URL.
 Installation
 ------------
 
-    pip install django-sendgrid-parse
+    pip install django-sendgrid-parse **NOT PUBLISHED YET**
 
 Usage
 -----
@@ -23,3 +23,6 @@ Usage
 * Add **django_sendgrid_parse** to your `installed_apps`
 * Add to urls.py `url("sendgrid", include("django_sendgrid_parse.urls"))`
 * Associate the Domain/Hostname and the URL in the Parse API settings page. Parse API settings page is at https://sendgrid.com/developer/reply
+
+
+GRVTYlabs 2016
