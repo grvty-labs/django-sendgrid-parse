@@ -26,4 +26,8 @@ notification events from sendgrid to our database',
         "Programming Language :: Python",
         "Framework :: Django",
     ],
+    install_requires=[
+        'jsonfield',
+        'django',
+    ],
 )

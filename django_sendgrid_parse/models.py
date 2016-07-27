@@ -1,4 +1,5 @@
 from django.db import models
+from jsonfield import JSONField
 
 
 class Attachment(models.Model):
@@ -12,9 +13,9 @@ class Email(models.Model):
     to = models.TextField()
     cc = models.TextField()
     subject = models.TextField()
-    dkim = models.JSONField()
-    SPF = models.JSONField()
-    envelope = models.JSONField()
+    dkim = JSONField()
+    SPF = JSONField()
+    envelope = JSONField()
     charsets = models.CharField(max_length=255)
     spam_score = models.FloatField()
     spam_report = models.TextField()
