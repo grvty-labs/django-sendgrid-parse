@@ -8,4 +8,4 @@ class EmailForm(forms.ModelForm):
 
     class Meta:
         model = Email
-        exclude = 'attachments'
+        exclude = ('attachments', )
