@@ -2,18 +2,19 @@ import os
 from setuptools import setup
 
 
-with open('README.md') as file_readme:
-    readme = file_readme.read()
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name='django-sendgrid-parse',
-    packages=['django_sendgrid_parse'],
+    # packages=['django_sendgrid_parse'],
+    packages=find_packages(),
     data_files=['README.md'],
     version='0.1.5',
     description='Django app to receive and save incoming email\
 notification events from sendgrid to our database',
-    long_description=readme,
-    packages=find_packages(),
+    # long_description=readme,
+    long_description=read("README.md"),
     author='GRVTYlabs',
     author_email='daniel.ortiz@grvtylabs.com',
     url='https://github.com/letops/django-sendgrid-parse',
