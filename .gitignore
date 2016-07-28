@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+bin/
+django_sendgrid/
+include/
+lib/
+manage.py
+pip-selfcheck.json
