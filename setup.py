@@ -10,7 +10,7 @@ setup(
     name='django-sendgrid-parse',
     packages=['django_sendgrid_parse'],
     data_files=['README.md'],
-    version='0.1.3',
+    version='0.1.4',
     description='Django app to receive and save incoming email\
 notification events from sendgrid to our database',
     long_description=read("README.md"),
@@ -26,7 +26,9 @@ notification events from sendgrid to our database',
         "Programming Language :: Python",
         "Framework :: Django",
     ],
-    install_requires=[
+    include_package_data=True,
+    zip_safe=False,
+    setup_requires=[
         'jsonfield',
     ],
 )
