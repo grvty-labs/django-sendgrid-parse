@@ -1,5 +1,5 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -10,7 +10,7 @@ setup(
     # packages=['django_sendgrid_parse'],
     packages=find_packages(),
     data_files=['README.md'],
-    version='0.1.5',
+    version='0.1.6',
     description='Django app to receive and save incoming email\
 notification events from sendgrid to our database',
     # long_description=readme,
