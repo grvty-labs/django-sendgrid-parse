@@ -94,3 +94,4 @@ include/
 lib/
 manage.py
 pip-selfcheck.json
+db.sqlite3

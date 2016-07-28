@@ -1,5 +1,5 @@
 import os
-from distutils.core import setup
+from setuptools import setup
 
 
 def read(fname):
@@ -26,9 +26,7 @@ notification events from sendgrid to our database',
         "Programming Language :: Python",
         "Framework :: Django",
     ],
-    include_package_data=True,
-    zip_safe=False,
-    setup_requires=[
+    install_requires=[
         'jsonfield',
     ],
 )
