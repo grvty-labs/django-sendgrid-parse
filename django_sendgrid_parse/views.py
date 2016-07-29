@@ -18,15 +18,13 @@ def sendgrid_email_receiver(request):
         form.instance.save()
         attachments_list = list()
         for i in range(1, form.cleaned_data['attachments'] + 1):
-            attachments_list.append(
-                Attachment(
-                    file=request.FILES['attachment%d' % i].read(),
-                    email=form.instance
-                )
-            )
+            att = Attachment(file=request.FILES['attachment%d' % i])
+            att.save()
+            print(att.id)
+            attachments_list.append(att)
 
-        Attachment.objects.bulk_create(attachments_list)
-        sendgrid_email_received.send(sender=None, email=form.instance)
-        return HttpResponse(status_code=200)
+        form.instance.attachments.add(*attachments_list)
+        message_received.send(sender=None, email=form.instance)
+        return HttpResponse(status=200)
 
-    return HttpResponse(status_code=400)
+    return HttpResponse(status=400)
