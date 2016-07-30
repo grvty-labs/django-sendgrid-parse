@@ -26,7 +26,9 @@ class Email(models.Model):
     dkim = JSONField()
     SPF = JSONField()
     envelope = JSONField()
-    charsets = models.CharField(max_length=255)
+    charsets = models.CharField(
+        max_length=255
+    )
     spam_score = models.FloatField()
     spam_report = models.TextField()
 
