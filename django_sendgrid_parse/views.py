@@ -7,6 +7,7 @@ from .models import Attachment
 from .forms import EmailForm
 from .signals import message_received
 
+import logging
 import sys
 
 
@@ -21,7 +22,8 @@ def sendgrid_email_receiver(request):
             attachments_list = list()
             for i in range(1, form.cleaned_data['attachments'] + 1):
                 attachments_list.append(
-                    Attachment(number=i, file=request.FILES['attachment%d' % i],
+                    Attachment(number=i,
+                               file=request.FILES['attachment%d' % i],
                                email=form.instance)
                 )
 
@@ -32,5 +34,6 @@ def sendgrid_email_receiver(request):
         return HttpResponse(status=400)
 
     except Exception as e:
-        print("Unexpected error: {}".format(str(e)))
-        return HttpResponse(status=500)
+        logging.error(
+            "Django Sendgrid Parse: Responded 208 to Sendgrid: {}".format(e))
+        return HttpResponse(status=208)
