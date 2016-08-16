@@ -29,6 +29,21 @@ Usage
 Release Notes
 -------------
 
+*   0.3.0
+
+  * Changing to [Semantic Versioning](http://semver.org/) for better
+  interpretation of the following releases.
+
+  * Note: Remember, this project is still in alpha, and the first stable
+  release will be **Version 1.0.0**
+
+*   0.2.2
+
+  * Bug detected in reception. Fixing.
+
+  * Models improved for translation. (Still trying to get the hold of this,
+    bear with me)
+
 *   0.2.1
 
   * Improved the Attachments model, in order to save all the information

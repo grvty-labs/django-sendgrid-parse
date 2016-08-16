@@ -1,8 +1,9 @@
 from django.db import models
-from django.utils.translation import ugettext as _ug
 
 from jsonfield import JSONField
 import os
+
+from . import _ugl
 
 
 def attachments_file_upload(instance, filename):
@@ -16,21 +17,75 @@ def attachments_file_upload(instance, filename):
 
 
 class Email(models.Model):
-    headers = models.TextField()
-    text = models.TextField()
-    html = models.TextField()
-    to_mailbox = models.TextField()
-    from_mailbox = models.TextField()
-    cc = models.TextField()
-    subject = models.TextField()
-    dkim = JSONField()
-    SPF = JSONField()
-    envelope = JSONField()
-    charsets = models.CharField(
-        max_length=255
+    headers = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Headers')
     )
-    spam_score = models.FloatField()
-    spam_report = models.TextField()
+    text = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Text')
+    )
+    html = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('HTML')
+    )
+    to_mailbox = models.TextField(
+        blank=False,
+        null=False,
+        verbose_name=_ugl('To')
+    )
+    from_mailbox = models.TextField(
+        blank=False,
+        null=False,
+        verbose_name=_ugl('From')
+    )
+    cc = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Carbon Copy')
+    )
+    subject = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Subject')
+    )
+    dkim = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('DomainKeys Identified Mail')
+    )
+    SPF = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Sender Policy Framework')
+    )
+    envelope = JSONField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Envelope')
+    )
+    charsets = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Charsets')
+    )
+    spam_score = models.FloatField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Spam score')
+    )
+    spam_report = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_ugl('Spam report')
+    )
+    # sender_ip
+    # attachment-info
+    # content-ids
 
 
 class Attachment(models.Model):
@@ -38,18 +93,18 @@ class Attachment(models.Model):
         default=1,
         blank=False,
         null=False,
-        verbose_name=_ug("Email's Attachment Number")
+        verbose_name=_ugl("Email's Attachment Number")
     )
     file = models.FileField(
         upload_to=attachments_file_upload,
         blank=False,
         null=False,
-        verbose_name=_ug('Attached File')
+        verbose_name=_ugl('Attached File')
     )
     email = models.ForeignKey(
         Email,
         blank=False,
         null=False,
         related_name='attachments',
-        verbose_name=_ug("Email Attached To")
+        verbose_name=_ugl("Email Attached To")
     )
