@@ -7,6 +7,8 @@ from .models import Attachment
 from .forms import EmailForm
 from .signals import message_received
 
+import sys
+
 
 @csrf_exempt
 @require_POST
@@ -29,6 +31,6 @@ def sendgrid_email_receiver(request):
 
         return HttpResponse(status=400)
 
-    except:
-        print("Unexpected error: {}".format(sys.exc_info()[0]))
+    except Exception as e:
+        print("Unexpected error: {}".format(str(e)))
         return HttpResponse(status=500)
