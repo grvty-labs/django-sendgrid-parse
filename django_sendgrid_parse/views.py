@@ -12,9 +12,7 @@ from .signals import message_received
 @require_POST
 @transaction.atomic
 def sendgrid_email_receiver(request):
-    print(request.POST)
     form = EmailForm(request.POST)
-    print(form)
 
     if form.is_valid():
         form.instance.save()
@@ -27,9 +25,6 @@ def sendgrid_email_receiver(request):
 
         Attachment.objects.bulk_create(attachments_list)
         message_received.send(sender=None, email=form.instance)
-        print('200')
         return HttpResponse(status=200)
 
-    print('400')
-    print(form)
     return HttpResponse(status=400)
