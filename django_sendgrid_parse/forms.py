@@ -7,21 +7,22 @@ class EmailForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EmailForm, self).__init__(*args, **kwargs)
-        self.fields['to'] = forms.CharField()
-        self.fields['from'] = forms.CharField()
-        self.fields['attachments'] = forms.IntegerField()
         self.fields['to_mailbox'].required = False
         self.fields['from_mailbox'].required = False
+        self.fields['to'] = self.fields['to_mailbox']
+        self.fields['from'] = self.fields['from_mailbox']
+        self.fields['attachments'] = forms.IntegerField()
 
-    def clean(self, *args, **kwargs):
-        super(EmailForm, self).clean()
-        self.cleaned_data['to_mailbox'] = self.cleaned_data.get('to')
-        self.cleaned_data['from_mailbox'] = self.cleaned_data.get('from')
+    def clean(self):
+        cleaned_data = super(EmailForm, self).clean()
+        cleaned_data['to_mailbox'] = self.cleaned_data.get('to')
+        cleaned_data['from_mailbox'] = self.cleaned_data.get('from')
+        return cleaned_data
 
     class Meta:
         model = Email
         exclude = ('attachments', )
         widget = {
-            'to_mailbox': forms.HiddenInput(),
-            'from_mailbox': forms.HiddenInput(),
+            'to_mailbox': forms.HiddenInput,
+            'from_mailbox': forms.HiddenInput,
         }
