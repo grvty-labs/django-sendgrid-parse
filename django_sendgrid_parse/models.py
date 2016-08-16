@@ -45,19 +45,19 @@ class Email(models.Model):
     cc = models.TextField(
         blank=True,
         null=True,
-        verbose_name=_ugl('Hidden')
+        verbose_name=_ugl('Carbon Copy')
     )
     subject = models.TextField(
         blank=True,
         null=True,
-        verbose_name=_ugl('Carbon Copy')
+        verbose_name=_ugl('Subject')
     )
-    dkim = JSONField(
+    dkim = models.TextField(
         blank=True,
         null=True,
         verbose_name=_ugl('DomainKeys Identified Mail')
     )
-    SPF = JSONField(
+    SPF = models.TextField(
         blank=True,
         null=True,
         verbose_name=_ugl('Sender Policy Framework')
@@ -83,6 +83,9 @@ class Email(models.Model):
         null=True,
         verbose_name=_ugl('Spam report')
     )
+    # sender_ip
+    # attachment-info
+    # content-ids
 
 
 class Attachment(models.Model):
