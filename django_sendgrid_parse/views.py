@@ -12,19 +12,23 @@ from .signals import message_received
 @require_POST
 @transaction.atomic
 def sendgrid_email_receiver(request):
-    form = EmailForm(request.POST)
+    try:
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            form.instance.save()
+            attachments_list = list()
+            for i in range(1, form.cleaned_data['attachments'] + 1):
+                attachments_list.append(
+                    Attachment(number=i, file=request.FILES['attachment%d' % i],
+                               email=form.instance)
+                )
 
-    if form.is_valid():
-        form.instance.save()
-        attachments_list = list()
-        for i in range(1, form.cleaned_data['attachments'] + 1):
-            attachments_list.append(
-                Attachment(number=i, file=request.FILES['attachment%d' % i],
-                           email=form.instance)
-            )
+            Attachment.objects.bulk_create(attachments_list)
+            message_received.send(sender=None, email=form.instance)
+            return HttpResponse(status=200)
 
-        Attachment.objects.bulk_create(attachments_list)
-        message_received.send(sender=None, email=form.instance)
-        return HttpResponse(status=200)
+        return HttpResponse(status=400)
 
-    return HttpResponse(status=400)
+    except:
+        print("Unexpected error: {}".format(sys.exc_info()[0]))
+        return HttpResponse(status=500)
