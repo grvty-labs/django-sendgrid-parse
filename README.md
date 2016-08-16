@@ -35,7 +35,9 @@ Release Notes
   interpretation of the following releases.
 
   * Note: Remember, this project is still in alpha, and the first stable
-  release will be **Version 1.0.0**
+  release will be **Version 1.0.0**.
+
+  * Simple testing has been successful up to this point.
 
 *   0.2.2
 
