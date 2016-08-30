@@ -32,6 +32,12 @@ functionality.
 *   Associate the Domain/Hostname and the URL in the Parse API settings page.
       Parse API settings page is [here](https://sendgrid.com/developer/reply)
 
+*   This application executes a signal when an email is received, in case you
+      wish to do something with the message after the save but before informing
+      Sendgrid about the reception. The signal is in:
+      `from django_sendgrid_parse.signals import message_received` and use the
+      `email` parameter.
+
 Extra functionality
 -------------------
 
@@ -102,8 +108,8 @@ Release Notes
 
   * First alpha version.
 
-  * This was the first time I published in PyPi (that is the reason this
-  is the first stable version)
+  * This was the first time I published in PyPi (and the reason this is the
+    first stable version)
 
 GRVTYlabs 2016
 
