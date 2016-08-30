@@ -89,8 +89,9 @@ ENV/
 .ropeproject
 
 bin/
-django_sendgrid/
+django_sendgrid_repo/
 include/
+include/*
 lib/
 manage.py
 pip-selfcheck.json
