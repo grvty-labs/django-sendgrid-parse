@@ -23,7 +23,9 @@ Usage
 
 *   In order to use the TransactionalEmail, you need to add the API key in
 your settings configuration the variable
-`DJANGO_SENDGRID_PARSE_API='Your-API-key'`
+`DJANGO_SENDGRID_PARSE_API='Your-API-key'` and by using
+`from django_sendgrid_parse.emails import TransactionalEmail` you can use this
+functionality.
 
 *   Add to urls.py `url("sendgrid", include("django_sendgrid_parse.urls"))`
 
@@ -60,6 +62,9 @@ Release Notes
   * Added TransactionalEmail functionality
 
   * It is required to use the API key to use the template engine.
+
+  * Some testing is still required, but we could say this is almost a stable
+  version until proven otherwise.
 
 *   0.3.0
 
