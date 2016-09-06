@@ -90,6 +90,7 @@ ENV/
 
 bin/
 django_sendgrid_repo/
+django_sendgrid/
 include/
 include/*
 lib/

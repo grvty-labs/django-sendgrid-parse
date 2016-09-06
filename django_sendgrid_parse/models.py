@@ -52,17 +52,20 @@ class Email(models.Model):
         null=True,
         verbose_name=_ugl('Subject')
     )
+    # Changed because sendgrid doesn't respect REST and JSON standards ¬¬
     dkim = models.TextField(
         blank=True,
         null=True,
         verbose_name=_ugl('DomainKeys Identified Mail')
     )
+    # Changed because sendgrid doesn't respect REST and JSON standards ¬¬
     SPF = models.TextField(
         blank=True,
         null=True,
         verbose_name=_ugl('Sender Policy Framework')
     )
     envelope = JSONField(
+        default={'to': None, 'from': None},
         blank=True,
         null=True,
         verbose_name=_ugl('Envelope')
