@@ -116,5 +116,6 @@ class Attachment(models.Model):
         verbose_name=_ugl("Email Attached To")
     )
 
+    @property
     def filename(self):
         return os.path.basename(self.file.name)
