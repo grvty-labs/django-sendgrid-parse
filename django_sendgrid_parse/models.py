@@ -86,9 +86,13 @@ class Email(models.Model):
         null=True,
         verbose_name=_ugl('Spam report')
     )
-    # sender_ip
-    # attachment-info
-    # content-ids
+    creation_date = models.DateTimeField(
+       auto_now_add=True,
+       verbose_name=_ugl('Creation date')
+    )
+    # TODO: sender_ip
+    # TODO: attachment-info
+    # TODO: content-ids
 
 
 class Attachment(models.Model):
@@ -111,3 +115,6 @@ class Attachment(models.Model):
         related_name='attachments',
         verbose_name=_ugl("Email Attached To")
     )
+
+    def filename(self):
+        return os.path.basename(self.file.name)
