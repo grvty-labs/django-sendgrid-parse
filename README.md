@@ -64,6 +64,10 @@ setting is used.
 Release Notes
 -------------
 
+*   0.4.2
+
+  * Fixed error
+
 *   0.4.1
 
   * Added filename property to Attachment
