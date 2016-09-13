@@ -8,10 +8,10 @@ from . import _ugl
 
 def attachments_file_upload(instance, filename):
     fn, ext = os.path.splitext(filename)
-    return 'emails/{to}/{id}/{num}{ext}'.format(
+    return 'emails/{to}/{id}/{fn}{ext}'.format(
         to=instance.email.to_mailbox,
         id=instance.email.id,
-        num=instance.number,
+        fn=fn[:25],
         ext=ext
     )
 

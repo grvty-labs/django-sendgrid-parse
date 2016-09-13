@@ -63,6 +63,9 @@ setting is used.
 
 Release Notes
 -------------
+*   0.4.3
+
+  * Modified attachment's filename
 
 *   0.4.2
 
