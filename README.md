@@ -142,8 +142,12 @@ Release Notes
 Owned and developed by
 --------
 
-[![GRVTYlabs][logo]](www.grvtylabs.com)
+[![StackShare][stack-shield]][stack-tech]
 
-[logo]: https://github.com/letops/django-sendgrid-parse/blob/master/logo.png?raw=true "GRVTYlabs"
+[![GRVTYlabs][logo]](http://www.grvtylabs.com)
+
+[logo]: https://github.com/grvty-labs/django-sendgrid-parse/blob/master/logo.png?raw=true "GRVTYlabs"
+[stack-shield]: http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
+[stack-tech]: http://stackshare.io/letops/grvtylabs
 
 [trans_email]: https://github.com/letops/django-sendgrid-parse/blob/master/django_sendgrid_parse/emails.py
