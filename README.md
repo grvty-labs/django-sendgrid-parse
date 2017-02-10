@@ -44,106 +44,45 @@ Extra functionality
 
 ### class TransactionalEmail [¶][trans_email]
 
-The EmailMessage class is initialized with the following parameters
-(in the given order, if positional arguments are used). Almost all parameters
-are optional and can be set at any time prior to calling the send() method.
+The `EmailMessage` class is initialized with the following parameters
+(in the given order, if positional arguments are used). All required
+parameters must be set prior to calling the `send()` method.
 
-`subject`: The subject line of the email.
+`subject`: Required. The subject line of the email.
 
-`template_id`: The transactional template ID used in Sendgrid.
+`template_id`: Required. The transactional template ID used in Sendgrid.
 
-`body`: The body text with which the template will be filled. This should be a
+`body`: Required. The body text with which the template will be filled. This should be a
 dictionary.
 
-`from_email`: The sender’s address. Both fred@example.com and Fred
-<fred@example.com> forms are legal. If omitted, the DEFAULT_FROM_EMAIL
-setting is used.
+`from_email`: Optional. The sender’s address. Both `fred@example.com`
+and `Fred <fred@example.com>` forms are accepted. If omitted, the
+`DEFAULT_FROM_EMAIL` setting is used.
 
-`to`: A list or tuple of recipient addresses.
+`to`: Optional. A list or tuple of recipient addresses.
 
-Release Notes
--------------
-*   0.4.3
 
-  * Modified attachment's filename
+Other docs
+----------
 
-*   0.4.2
+*   [Changelog][changelog]
+*   [Milestones][milestones]
+*   [LICENSE][license]
 
-  * Fixed error
-
-*   0.4.1
-
-  * Added filename property to Attachment
-
-  * Added creation_date field to Email
-
-*   0.4.0
-
-  * Added TransactionalEmail functionality
-
-  * It is required to use the API key to use the template engine.
-
-  * Some testing is still required, but we could say this is almost a stable
-  version until proven otherwise.
-
-*   0.3.4
-
-  *  Testing has been successful enough to say we are at BETA.
-
-  * Now you can create emails manually without actually receiving them.
-  (Oh yes, this was a small issue thanks to JSONField)
-
-*   0.3.1
-
-  *  Added comments and TODO's inside the code.
-
-  *  Modified some models and included their migrations, but nothing to
-  important
-
-*   0.3.0
-
-  * Changing to [Semantic Versioning](http://semver.org/) for better
-  interpretation of the following releases.
-
-  * Note: Remember, this project is still in alpha, and the first stable
-  release will be **Version 1.0.0**.
-
-  * Simple testing has been successful up to this point.
-
-*   0.2.2
-
-  * Bug detected in reception. Fixing.
-
-  * Models improved for translation. (Still trying to get the hold of this,
-    bear with me)
-
-*   0.2.1
-
-  * Improved the Attachments model, in order to save all the information
-  inside the **media** directory
-
-  * Migrate is required
-
-*   0.2
-
-  * The Email model lacked a **from** field. The word from is reserved by
-  Python, so it had to be named as **from_mailbox** and the **to** field
-  was renamed to **to_mailbox** just to maintain the standard.
-
-  * Migrate is required
-
-*   0.1.9
-
-  * First alpha version.
-
-  * This was the first time I published in PyPi (and the reason this is the
-    first stable version)
 
 Owned and developed by
 --------
 
 [![GRVTYlabs][logo]](www.grvtylabs.com)
 
-[logo]: https://github.com/letops/django-sendgrid-parse/blob/master/logo.png?raw=true "GRVTYlabs"
+[![GRVTY][logo]](http://grvty.digital)
 
-[trans_email]: https://github.com/letops/django-sendgrid-parse/blob/master/django_sendgrid_parse/emails.py
+[logo]: http://grvty.digital/images/logos/repos-logo-1.png?raw=true "GRVTY"
+[stack-shield]: http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
+[stack-tech]: http://stackshare.io/grvty/grvty
+
+[trans_email]: https://github.com/grvty-labs/django-sendgrid-parse/blob/master/django_sendgrid_parse/emails.py
+
+[changelog]: https://github.com/grvty-labs/django-sendgrid-parse/blob/master/docs/Changelog.md
+[milestones]: https://github.com/grvty-labs/django-sendgrid-parse/blob/master/docs/Milestones.md
+[license]: https://github.com/grvty-labs/django-sendgrid-parse/blob/master/LICENSE
