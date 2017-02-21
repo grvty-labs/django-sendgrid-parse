@@ -106,7 +106,8 @@ class Attachment(models.Model):
         upload_to=attachments_file_upload,
         blank=False,
         null=False,
-        verbose_name=_ugl('Attached File')
+        verbose_name=_ugl('Attached File'),
+        max_length=1000,
     )
     email = models.ForeignKey(
         Email,
